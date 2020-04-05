@@ -1,0 +1,72 @@
+import java.io.*;
+import java.util.*;
+
+public class Test
+{
+	public static void main(String [] ar)throws IOException{
+		
+		/**
+
+		1. 이름 국어 영어 수학 점수를 입력받고
+		2. tot 총점과 평균을 구하는 프로그램
+
+		*/
+
+		BufferedReader br = new BufferedReader(
+			new InputStreamReader(System.in));
+		
+		String name = ar[0];
+		System.out.print(" 이름 : " + name);
+
+// == 과목 이름 배열
+
+		System.out.println();
+		String [] subject = new String[ar.length -1];
+		for (int i =0 ; i < subject.length ; i++ ){
+			subject [i] = ar[i+1];
+
+		}//end for
+	
+
+// == 총점
+		System.out.println("2단계");
+		int [] jumsu = new int[ subject.length +1 ];
+		for (int i = 0; i < subject.length ; i++ ){
+			System.out.print( subject[i] + " 의 점수 입력 : ");
+			jumsu [i] = Integer.parseInt(br.readLine());
+			jumsu [jumsu.length -1] += jumsu[i];		// 이부분이 문제
+
+		}//end for
+		
+
+// == 평균 계산		
+		System.out.println("3단계");
+		float avg = jumsu [jumsu.length -1 ] /(float)subject.length;
+
+		avg =  (int)((avg + 0.005)*100) / 100.f;
+
+
+// == 결과 도출
+		// 윗창
+		System.out.print("이름\t");
+		for(int i = 0; i< subject.length ; i++){
+			System.out.print( subject[i] + "\t");
+		}
+			System.out.println("총점\t평균");
+
+		// 아래창
+		System.out.print( name + "\t");
+		for(int i =0 ; i< jumsu.length ; i++){
+			System.out.print( jumsu[i] + "\t");
+		}
+			System.out.println(avg);
+
+	
+
+		
+		
+
+
+
+	}// end main
+}
